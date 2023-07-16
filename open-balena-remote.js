@@ -121,7 +121,7 @@ async function initialRequestHandler (req, res, next) {
           var portOpen = await waitPort({ host: "127.0.0.1", port: sessionData.tunnel.port, timeout: 10 * 1000 });
           if (!portOpen) { throw "Unable to open VPN tunnel" };
           if (DEBUG) console.log("Opened VPN tunnel from 127.0.0.1:" + sessionData.tunnel.port + " to remote device " + req.query.uuid + ":" + remotePort + " with PID " + sessionData.tunnel.pid);
-          var redirect = req.protocol + "://" + req.headers.host.split(":")[0] + ":" + sessionData.proxyPort;
+          var redirect = req.protocol + "://" + req.headers.host.split(":")[0];
           // if necessary to start custom server to faciltate request, do so
           if (routes[req.query.service].serverCmd) {
             sessionData.server = { port: await portfinder.getPortPromise({ port: 30000, stopPort: 39999 }) };
