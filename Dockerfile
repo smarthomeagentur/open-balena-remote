@@ -73,6 +73,8 @@ COPY views ./views
 
 RUN npm install --silent
 
+RUN npm install -g --silent forever
+
 COPY scripts ./scripts
 
 RUN chmod +x scripts/*

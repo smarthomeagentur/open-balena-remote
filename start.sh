@@ -9,6 +9,7 @@
     &
 
 # Start open-balena-remote
-node open-balena-remote.js &
+forever stopall
+forever start open-balena-remote.js
 
 sleep infinity
